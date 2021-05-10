@@ -1,0 +1,28 @@
+{% extends 'layout.html' %}
+
+{% block body %}
+<h1>Sign in</h1>
+<form action="" method="post">
+    {{ form.hidden_tag() }}
+    <p>
+        {{ form.user_code.label }}
+        {{ form.user_code }}
+        {% for error in form.user_code.errors %}
+        <span style="color:red;">[{{ error }}]</span>
+        {% endfor %}
+    </p>
+    <p>
+        {{ form.password.label }}
+        {{ form.password }}
+        {% for error in form.password.errors %}
+        <span style="color:red;">[{{ error }}]</span>
+        {% endfor %}
+    </p>
+    <p>{{ form.remember_me() }}{{ form.remember_me.label }}</p>
+    <p>{{ form.submit() }}</p>
+    <p><a href="{{ url_for('signup') }}">Click to Register</a></p>
+</form>
+{% with messages = get_flashed_messages() %}
+<h2>{{ messages[0] }}</h2>
+{% endwith %}
+{% endblock body %}

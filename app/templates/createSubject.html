@@ -1,0 +1,23 @@
+{% extends 'layout.html' %}
+
+{% block body %}
+<h1>Create subject</h1>
+<form action="" method="post" >
+    {{ form.hidden_tag() }}
+    <p>
+        {{ form.subject_name.label }}<br>
+        {{ form.subject_name }}<br>
+        {% for error in form.subject_name.errors %}
+            <span style="color: red">[{{ error }}]</span>
+        {% endfor %}
+    </p>
+    <p>
+        {{ form.lecturer_name.label }}<br>
+        {{ form.lecturer_name }}<br>
+        {% for error in form.lecturer_name.errors %}
+            <span style="color: red">[{{ error }}]</span>
+        {% endfor %}
+    </p>
+    <p>{{ form.submit() }}</p>
+</form>
+{% endblock body %}

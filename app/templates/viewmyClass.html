@@ -1,0 +1,13 @@
+{% extends 'layout.html' %}
+{% block body %}
+{% for a in q %}
+    <p>My class:</p><br>
+    <p>{{ a.Class_.name }}</p>
+    <p>My subject:</p>
+    <p>{{ a.Subject.name }}</p>
+    <p>Date start:</p>
+    <p>{{ a.Class_.date_start }}</p>
+    <p>Lecturer:</p>
+    <p>{{ a.Subject.lecturers_name }}</p>
+{% endfor %} 
+{% endblock body %}

@@ -1,0 +1,48 @@
+{% extends 'layout.html' %}
+
+{% block body %}
+<h1>Create Class</h1>
+<form action="{{ url_for('updateClass', class_id = class_.id) }}" method="post" >
+    {{ form.hidden_tag() }}
+    <p>
+        {{ form.subject.label }}<br>
+        {{ form.subject(value=class_.subject_id) }}<br>
+        {% for error in form.subject.errors %}
+            <span style="color: red">[{{ error }}]</span>
+        {% endfor %}
+    </p>
+    <p>
+        {{ form.name.label }}<br>
+        {{ form.name(value=class_.name) }}<br>
+        {% for error in form.name.errors %}
+            <span style="color: red">[{{ error }}]</span>
+        {% endfor %}
+    </p>
+    <p>
+        {{ form.seats.label }}<br>
+        {{ form.seats(value=class_.seats) }}<br>
+        {% for error in form.seats.errors %}
+            <span style="color: red">[{{ error }}]</span>
+        {% endfor %}
+    </p>
+    <p>
+        {{ form.lesson.label }}<br>
+        {{ form.lesson(value=class_.lesson) }}<br>
+        {% for error in form.lesson.errors %}
+            <span style="color: red">[{{ error }}]</span>
+        {% endfor %}
+    </p>
+    <p>
+        {{ form.lesson_start.label }}<br>
+        {{ form.lesson_start(value=class_.lesson_start) }}<br>
+        {% for error in form.lesson_start.errors %}
+            <span style="color: red">[{{ error }}]</span>
+        {% endfor %}
+    </p>
+    <p>Date Start</p><br>
+    <input type="date" name="date_start" id="date_start" value="{{ class_.date_start }}"><br>
+    <p>Date End</p><br>
+    <input type="date" name="date_end" id="date_end" value="{{ class_.date_end }}"><br>
+    <p>{{ form.submit(value="Update Class") }}</p>
+</form>
+{% endblock body %}

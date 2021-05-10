@@ -1,0 +1,23 @@
+{% extends 'layout.html' %}
+<h1>Class</h1>
+{% block body %}
+    <ul>            
+         {% for class in classes %}
+         <h4>Class name: {{ class.name }}</h4> 
+         {% if current_user.is_authenticated %}
+         <a href="{{ url_for('chooseClass', class_id = class.id) }}">Sign up Class</a>
+         {% endif %}
+         {% if current_user.role == 'admin' %}
+         <a href="{{ url_for('editClass', class_id = class.id) }}">Edit Class</a>
+         <a href="{{ url_for('deleteClass', class_id = class.id) }}">Delete Class</a>
+
+         {% endif %}
+            <li>Số ghế: {{ class.seats }}</li>
+            <li>Số tiết: {{ class.lesson }}</li>
+            <li>Tiết bắt đầu trong ngày: {{ class.lesson_start }}</li>
+            <li>Ngày bắt đầu: {{ class.date_start }}</li>
+            <li>Ngày kết thúc: {{ class.date_end }}</li>
+
+        {% endfor %}
+    </ul><br>
+{% endblock body %}
